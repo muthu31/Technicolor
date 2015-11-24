@@ -1,0 +1,94 @@
+ <p class="pull-right"><a class="btn btn-primary btn-sm" ng-href="/login" role="button" ng-click="doLogout()">LogOut</a></p>
+ <uib-tabset>
+    <uib-tab heading="States">
+    	<form class="form-horizontal" ng-controller = "statesController">
+		  <div class="form-group">
+		    <label for="country" class="col-md-2 control-label">Select State</label>
+		    <div class="col-sm-10">
+		      <select id="stateDropdown" class="form-control" ng-change="onstatechange()" ng-model="state" ng-options="state for state in states"></select>
+		    </div>
+		  </div>
+		  <h3>State Detail</h3>
+		  <div class="form-group">
+		  	<label class="col-md-3">Name</label>
+		  	<span ng-bind="stateInfo.name"></span>
+		  </div>
+		  <div class="form-group">
+		  	<label class="col-md-3">Abbreviation</label>
+		  	<span ng-bind="stateInfo.abbreviation"></span>
+		  </div>
+		  <div class="form-group">
+		  	<label class="col-md-3">Capital</label>
+		  	<span ng-bind="stateInfo.capital"></span>
+		  </div>
+		  <div class="form-group">
+		  	<label class="col-md-3">Most populous city</label>
+		  	<span>{{stateInfo["most-populous-city"]}}</span>
+		  </div>
+		  <div class="form-group">
+		  	<label class="col-md-3">Population</label>
+		  	<span ng-bind="stateInfo.population"></span>
+		  </div>
+		  <div class="form-group">
+		  	<label class="col-md-3">Square miles</label>
+		  	<span>{{stateInfo["square-miles"]}}</span>
+		  </div>
+		  <div class="form-group">
+		  	<label class="col-md-3">Timezone-1</label>
+		  	<span>{{stateInfo["time-zone-1"]}}</span>
+		  </div>
+		  <div class="form-group">
+		  	<label class="col-md-3">Timezone-2</label>
+		  	<span>{{stateInfo["time-zone-2"]}}</span>
+		  </div>
+		  <div class="form-group">
+		  	<label class="col-md-3">District</label>
+		  	<span ng-bind="stateInfo.dst"></span>
+		  </div>
+		  </form>
+    </uib-tab> 
+    <uib-tab heading="Guest Book">
+    	<h4>Write Message</h4>
+    	<form class="form-horizontal loginform" ng-controller="guestBookController">
+		  <div class="form-group">
+		    <label for="phoneno" class="col-md-2 control-label">Phone Number</label>
+		    <div class="col-sm-10">
+		      <input type="tel" class="form-control" id="phoneno" placeholder="Phone Number" ng-model="phoneno">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="message" class="col-md-2 control-label">Message</label>
+		    <div class="col-sm-10">
+		      <textarea class="form-control" id="message" placeholder="Message" ng-model="message" ></textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <input type="button" class="btn-primary btn-sm" value="Add" ng-click="addMessage()" />
+		    </div>
+		  </div>
+		  </form>
+    </uib-tab> 
+    <uib-tab heading="All Messages" select="fetchMessages()">
+		<div >
+			<div class="panel panel-default" ng-repeat="msg in messages" >
+			  <div class="panel-body">
+		    	  <div class="form-group">
+				  	<label class="col-md-3">User</label>
+				  	<span>{{msg.user}}</span>
+				  </div>
+				  <div class="form-group">
+				  	<label class="col-md-3">PhoneNumber</label>
+				  	<span>{{msg.phone}}</span>
+				  </div>
+				  <div class="form-group">
+				  	<label class="col-md-3">Message</label>
+				  	<span>{{msg.user}}</span>
+				  </div>
+			  </div>
+			</div>
+		</div>
+					
+    </uib-tab>    
+    
+  </uib-tabset>
